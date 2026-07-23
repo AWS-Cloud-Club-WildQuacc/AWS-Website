@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08090a" />
+    <link rel="icon" type="image/jpeg" href="/src/assets/logo.jpg" />
+    <link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/pixelify-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Critical loader geometry prevents an unstyled full-size logo before the app CSS arrives. -->
+    <style>
+      html, body { margin: 0; background: #05010a; }
+      body.boot-loading { overflow: hidden; }
+      .boot-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        min-width: 320px;
+        place-items: center;
+        overflow: hidden;
+        padding: 24px;
+        box-sizing: border-box;
+        background: #05010a;
+        color: #fff;
+      }
+      .boot-loader__content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        width: min(100%, 352px);
+        justify-items: center;
+      }
+      .boot-loader__logo {
+        width: clamp(112px, 24vw, 160px);
+        aspect-ratio: 1;
+        overflow: hidden;
+        background: #05010a;
+      }
+      .boot-loader__logo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .boot-loader__title,
+      .boot-loader__status { margin-inline: 0; text-align: center; }
+      .boot-loader__bar { box-sizing: border-box; width: 100%; }
+    </style>
+    <title>AWSCC WildQuacc · Student Cloud Community</title>
+    <meta name="description" content="AWSCC WildQuacc empowers future cloud leaders through hands-on AWS workshops, certification support, and community events." />
+  </head>
+  <body class="boot-loading">
+    <div
+      id="boot-loader"
+      class="boot-loader"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading WildQuacc"
+    >
+      <div class="boot-loader__scanlines" aria-hidden="true"></div>
+      <div class="boot-loader__pixels" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="boot-loader__content">
+        <div class="boot-loader__logo" aria-hidden="true">
+          <img src="/src/assets/logo.jpg" alt="" width="160" height="160" />
+        </div>
+        <p class="boot-loader__title">WILDQUACC</p>
+        <div class="boot-loader__bar" aria-hidden="true"><span></span></div>
+        <p class="boot-loader__status">LOADING CLOUD...</p>
+      </div>
+    </div>
+    <div id="root"></div>
+    <noscript>This website requires JavaScript to run.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
